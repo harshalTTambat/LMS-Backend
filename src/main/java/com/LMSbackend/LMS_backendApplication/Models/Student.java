@@ -1,7 +1,7 @@
 package com.LMSbackend.LMS_backendApplication.Models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
 
-@Entity
+@Entity   // reflection of table
 @Table(name="Student")
 @Getter
 @Setter
@@ -22,10 +22,9 @@ public class Student {
     private int id;
     @Column(nullable = false)
     private String name;
-    @Column(name = "school_email",unique = true,nullable = false)
+    @Column(nullable = false)
     private String email;
     private int age;
-
     private String country;
 
     // when new student get created, that time stamp automatically generated
@@ -35,11 +34,17 @@ public class Student {
     @UpdateTimestamp
     private Date lastUpdatedOn;
 
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private Card card;
+
+
     public Student(String name, String email, int age, String country) {
         this.name = name;
         this.email = email;
         this.age = age;
         this.country = country;
     }
+
+
 
 }
