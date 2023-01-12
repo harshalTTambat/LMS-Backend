@@ -2,12 +2,10 @@ package com.LMSbackend.LMS_backendApplication.RequestDTO;
 
 import jakarta.persistence.Column;
 
-import lombok.Getter;
+import lombok.Data;
 
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 
 public class StudentRequestDto {
 

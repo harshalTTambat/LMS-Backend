@@ -2,6 +2,8 @@ package com.LMSbackend.LMS_backendApplication.Models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +12,9 @@ import java.util.List;
 @Entity
 @Table(name = "author")
 @Data // contains ---> @Getters, @Setters, @RequiredArgsConstructor
-
+//@Builder -->  build the class object & must write @AllArgsConstructor with it
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 
 public class Author {
