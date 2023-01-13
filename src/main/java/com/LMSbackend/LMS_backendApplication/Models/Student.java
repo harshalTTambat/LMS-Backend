@@ -2,26 +2,25 @@ package com.LMSbackend.LMS_backendApplication.Models;
 
 import jakarta.persistence.*;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.sql.Date;
 
 @Entity   // reflection of table
-@Table(name="Student")
-@Getter
-@Setter
+@Table(name="student")
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String email;
     private int age;
@@ -36,15 +35,5 @@ public class Student {
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private Card card;
-
-
-    public Student(String name, String email, int age, String country) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-        this.country = country;
-    }
-
-
 
 }

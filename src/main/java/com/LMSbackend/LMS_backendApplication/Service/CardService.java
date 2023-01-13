@@ -3,10 +3,15 @@ package com.LMSbackend.LMS_backendApplication.Service;
 import com.LMSbackend.LMS_backendApplication.Enums.CardStatus;
 import com.LMSbackend.LMS_backendApplication.Models.Card;
 import com.LMSbackend.LMS_backendApplication.Models.Student;
+import com.LMSbackend.LMS_backendApplication.Repository.CardRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CardService {
+
+    @Autowired
+    CardRepository cardRepository;
 
     public Card createCard(Student student){
 

@@ -40,8 +40,10 @@ public class BookService {
 // need to save the author first before saving book
             authorRepository.save(author);
 
-            // save book
-            bookRepository.save(book);
+            // save book not needed, because bidirectional relationship
+            //bookRepository.save(book);
+            // automatically save by parent (Author) because author updated and save
+
         }
         catch (Exception e)
         {
