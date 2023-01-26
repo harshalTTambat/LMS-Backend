@@ -15,14 +15,17 @@ public class CardService {
 
     public Card createCard(Student student){
 
-        Card newCard = new Card();
+        Card card = new Card();
+        card.setCardStatus(CardStatus.ACTIVATED);
+        //link student with a new card
+        card.setStudent(student);
+        student.setCard(card);
 
-        // for new foreign key colum in card table(card class)
-        // set StudentInfo for unidirectional
-        // enum card status --> ACTIVATED
-        newCard.setCardStatus(CardStatus.ACTIVATED);
-        newCard.setStudent(student); //For that new foreign key column
+        cardRepository.save(card);
+        return card;
+    }
 
-        return newCard;
+    public void deactivateCard(int student_id){
+        cardRepository.deactivateCard(student_id, CardStatus.DEACTIVATED.toString());
     }
 }

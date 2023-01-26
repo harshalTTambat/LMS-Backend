@@ -1,6 +1,7 @@
 package com.LMSbackend.LMS_backendApplication.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,16 +23,16 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-    private int age;
-    private String country;
 
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
-    private List<Book> booksWritten;
+    private int age;
+    private String country;
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("author")
+    private List<Book> booksWritten;
 
 }

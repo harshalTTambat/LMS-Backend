@@ -53,4 +53,18 @@ public class BookService {
         return "Book added successfully";
     }
 
+    public List<Book> getBooks(String genre, boolean available, String author){
+
+
+        if(genre != null && author != null){
+            return bookRepository.findBooksByGenreAuthor(genre, author, available);
+        }else if(genre != null){
+            return bookRepository.findBooksByGenre(genre, available);
+        }else if(author != null){
+            return bookRepository.findBooksByAuthor(author, available);
+        }else{
+            return bookRepository.findByAvailability(available);
+        }
+    }
+
 }

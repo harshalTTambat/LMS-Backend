@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import java.sql.Date;
+
+import java.util.Date;
 
 @Entity   // reflection of table
 @Table(name="student")
@@ -27,11 +28,25 @@ public class Student {
     private String country;
 
     // when new student get created, that time stamp automatically generated
+
     @CreationTimestamp
-    private Date createdOn;
+    private java.util.Date createdOn;
 
     @UpdateTimestamp
-    private Date lastUpdatedOn;
+    private Date updatedOn;
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
+    }
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private Card card;

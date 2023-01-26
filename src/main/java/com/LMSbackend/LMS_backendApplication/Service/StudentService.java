@@ -41,4 +41,20 @@ public class StudentService {
 
         return "Student & card added successfully ";
     }
+    public Student getDetailsByEmail(String email){
+        return studentRepository.findByEmailId(email);
+    }
+
+    public Student getDetailsById(int id){
+        return studentRepository.findById(id).get();
+    }
+
+    public void updateStudent(Student student){
+        studentRepository.updateStudentDetails(student);
+    }
+
+    public void deleteStudent(int id){
+        cardService.deactivateCard(id);
+        studentRepository.deleteCustom(id);
+    }
 }
